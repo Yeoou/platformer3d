@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,29 +25,31 @@ public class PatrolEnemy : MonoBehaviour
 
     private int currentPatrolPoint = 0;
 
-    /*----------------------------BROKEN UPDATE LOOP---------------------------------------------------------------------------------
+    
 
     private void Update()
     {
         if (enemyStats.move == true)
         {
-            Vector3 moveToPoint = patrolPoints(currentPatrolPoint).position;   
+            Vector3 moveToPoint = patrolPoints[currentPatrolPoint].position;   
             transform.position = Vector3.MoveTowards(transform.position, moveToPoint, enemyStats.speed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, moveToPoint) < 0.01f)
             {
-                currentPatrolPoint +;
+                currentPatrolPoint ++;
 
-                if (currentPatrolPoint > patrolPoints.Length)  
+                if (currentPatrolPoint >= patrolPoints.Length)  
                 {
                     currentPatrolPoint = 0;
                 }
+                
             }
         }
+         
+
     }
 
-       -------------------------------------------------------------------------------------------------------------------------------*/
-}
+   
 
 
 
@@ -96,8 +99,9 @@ public class PatrolEnemy : MonoBehaviour
 
 
 
-//-----------SOLUTION SCRIPT------------------
-public class PatrolEnemy_Answer : MonoBehaviour
+
+    //-----------SOLUTION SCRIPT------------------
+    public class PatrolEnemy_Answer : MonoBehaviour
 {
     /// <summary>
     /// Contains tunable parameters to tweak the enemy's movement.
@@ -143,4 +147,5 @@ public class PatrolEnemy_Answer : MonoBehaviour
             }
         }
     }
+}
 }
